@@ -10,7 +10,7 @@ class CartController extends AppController
 
 	public function index()
 	{
-		$booksInCart = $this->Session->read('Cart.books');
+		$booksInCart = $this->Cookie->read('Cart.books');
 		$books = $this->Book->findAllById(array_keys($booksInCart));
 		$summary = array('amount' => 0, 'total' => 0);
 
@@ -31,27 +31,27 @@ class CartController extends AppController
 
 	public function addBook($bookId)
 	{
-		$booksInCart = $this->Session->read('Cart.books');
+		$booksInCart = $this->Cookie->read('Cart.books');
 
 		if (isset($booksInCart[$bookId]))
 			$booksInCart[$bookId]++;
 		else
 			$booksInCart[$bookId] = 1;
 
-		$this->Session->write('Cart.books', $booksInCart);
+		$this->Cookie->write('Cart.books', $booksInCart);
 		$this->flash('Added to Cart', $this->referer());
 	}
 
 	public function removeBook($bookId)
 	{
-		$booksInCart = $this->Session->read('Cart.books');
+		$booksInCart = $this->Cookie->read('Cart.books');
 
 		$booksInCart[$bookId]--;
 
 		if ($booksInCart[$bookId] == 0)
 			unset($booksInCart[$bookId]);
 
-		$this->Session->write('Cart.books', $booksInCart);
+		$this->Cookie->write('Cart.books', $booksInCart);
 		$this->flash('Removed from Cart', $this->referer());
 	}
 }

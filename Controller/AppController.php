@@ -38,7 +38,8 @@ class AppController extends Controller
 		'Auth' => array(
 			'loginRedirect' => array('controller' => 'books', 'action' => 'index'),
 			'logoutRedirect' => array('controller' => 'books', 'action' => 'index')
-		)
+		),
+		'Cookie'
 	);
 
 	public function beforeFilter()
