@@ -41,4 +41,17 @@ class CartController extends AppController
 		$this->Session->write('Cart.books', $booksInCart);
 		$this->flash('Added to Cart', $this->referer());
 	}
+
+	public function removeBook($bookId)
+	{
+		$booksInCart = $this->Session->read('Cart.books');
+
+		$booksInCart[$bookId]--;
+
+		if ($booksInCart[$bookId] == 0)
+			unset($booksInCart[$bookId]);
+
+		$this->Session->write('Cart.books', $booksInCart);
+		$this->flash('Removed from Cart', $this->referer());
+	}
 }
