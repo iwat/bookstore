@@ -3,6 +3,7 @@
 		<tr>
 			<th>Title</th>
 			<th>Released</th>
+			<th>Published by</th>
 			<th>ISBN</th>
 			<th>Price</th>
 		</tr>
@@ -10,6 +11,7 @@
 		<tr>
 			<td><?= $book['Book']['title']; ?></td>
 			<td><?= $book['Book']['released']; ?></td>
+			<td><?= $book['Publisher']['name']; ?></td>
 			<td><?= $book['Book']['isbn13']; ?></td>
 			<td><?= $book['Book']['price']; ?></td>
 		</tr>
