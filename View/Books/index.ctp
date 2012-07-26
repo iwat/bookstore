@@ -15,7 +15,10 @@
 			<td><?= $book['Publisher']['name']; ?></td>
 			<td><?= $book['Book']['isbn13']; ?></td>
 			<td><?= $book['Book']['price']; ?></td>
-			<td><?= $this->Html->link('Edit', array('action' => 'edit', $book['Book']['id'])); ?></td>
+			<td>
+				<?= $this->Html->link('Add to Cart', array('controller' => 'cart', 'action' => 'addBook', $book['Book']['id'])); ?>
+				<?= $this->Html->link('Edit', array('action' => 'edit', $book['Book']['id'])); ?>
+			</td>
 		</tr>
 		<?php endforeach; ?>
 	</table>
