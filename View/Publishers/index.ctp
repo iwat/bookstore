@@ -9,5 +9,8 @@
 		</tr>
 		<?php endforeach; ?>
 	</table>
+	<div style="text-align:right;">
+		Rendered in: <?= printf('%.3f', $spent); ?>s
+	</div>
 </div>
 
