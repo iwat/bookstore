@@ -19,3 +19,9 @@
 	</table>
 	<?= $this->Paginator->numbers(); ?>
 </div>
+<div class="actions">
+	<h3>Actions</h3>
+	<ul>
+		<li><?= $this->Html->link('New Book', array('action' => 'add')); ?></li>
+	</ul>
+</div>
