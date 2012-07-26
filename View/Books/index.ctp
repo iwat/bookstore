@@ -6,6 +6,7 @@
 			<th>Published by</th>
 			<th>ISBN</th>
 			<th>Price</th>
+			<th>Actions</th>
 		</tr>
 		<?php foreach ($books as $book): ?>
 		<tr>
@@ -14,6 +15,7 @@
 			<td><?= $book['Publisher']['name']; ?></td>
 			<td><?= $book['Book']['isbn13']; ?></td>
 			<td><?= $book['Book']['price']; ?></td>
+			<td><?= $this->Html->link('Edit', array('action' => 'edit', $book['Book']['id'])); ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</table>
