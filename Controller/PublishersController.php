@@ -3,7 +3,8 @@ class PublishersController extends AppController
 {
 	public $paginate = array(
 		'limit' => 5,
-		'order' => array('Publisher.name' => 'asc')
+		'order' => array('Publisher.name' => 'asc'),
+		'contain' => false
 	);
 
 	public function beforeFilter()

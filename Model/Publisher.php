@@ -1,6 +1,8 @@
 <?php
 class Publisher extends AppModel
 {
+	public $actsAs = array('Containable');
+
 	public $hasMany = array('Book');
 
 	public $validate = array(
