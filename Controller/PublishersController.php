@@ -21,4 +21,15 @@ class PublishersController extends AppController
 		$publishers = $this->paginate('Publisher');
 		$this->set(compact('publishers'));
 	}
+
+	public function add()
+	{
+		if ($this->request->data)
+		{
+			if ($this->Publisher->save($this->request->data))
+			{
+				$this->flash('Added Successfully', array('action' => 'index'));
+			}
+		}
+	}
 }
