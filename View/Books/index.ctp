@@ -15,4 +15,5 @@
 		</tr>
 		<?php endforeach; ?>
 	</table>
+	<?= $this->Paginator->numbers(); ?>
 </div>
