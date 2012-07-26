@@ -9,8 +9,8 @@
 		</tr>
 		<?php endforeach; ?>
 	</table>
+	<?= $this->Paginator->numbers(); ?>
 	<div style="text-align:right;">
 		Rendered in: <?= printf('%.3f', $spent); ?>s
 	</div>
 </div>
-

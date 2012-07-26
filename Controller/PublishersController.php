@@ -1,6 +1,11 @@
 <?php
 class PublishersController extends AppController
 {
+	public $paginate = array(
+		'limit' => 5,
+		'order' => array('Publisher.name' => 'asc')
+	);
+
 	public function beforeFilter()
 	{
 		$this->start = microtime(true);
@@ -13,8 +18,7 @@ class PublishersController extends AppController
 
 	public function index()
 	{
-		$publishers = $this->Publisher->find('all');
+		$publishers = $this->paginate('Publisher');
 		$this->set(compact('publishers'));
 	}
 }
-
