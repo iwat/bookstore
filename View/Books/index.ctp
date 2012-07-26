@@ -3,6 +3,7 @@
 		<tr>
 			<th>Title</th>
 			<th>Released</th>
+			<th>Author(s)</th>
 			<th>Published by</th>
 			<th>ISBN</th>
 			<th>Price</th>
@@ -12,6 +13,14 @@
 		<tr>
 			<td><?= $book['Book']['title']; ?></td>
 			<td><?= $book['Book']['released']; ?></td>
+			<td><?php
+				$authors = array();
+				foreach ($book['Author'] as $author)
+				{
+					$authors[] = $author['name'];
+				}
+				echo implode(', ', $authors);
+			?></td>
 			<td><?= $book['Publisher']['name']; ?></td>
 			<td><?= $book['Book']['isbn13']; ?></td>
 			<td><?= $book['Book']['price']; ?></td>

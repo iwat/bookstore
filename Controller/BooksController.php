@@ -22,8 +22,9 @@ class BooksController extends AppController
 			}
 		}
 
+		$authors = $this->Book->Author->find('list', array('order' => 'name'));
 		$publishers = $this->Book->Publisher->find('list', array('order' => 'name'));
-		$this->set(compact('publishers'));
+		$this->set(compact('authors', 'publishers'));
 	}
 
 	public function edit($bookId)
@@ -40,7 +41,8 @@ class BooksController extends AppController
 			$this->request->data = $this->Book->findById($bookId);
 		}
 
+		$authors = $this->Book->Author->find('list', array('order' => 'name'));
 		$publishers = $this->Book->Publisher->find('list', array('order' => 'name'));
-		$this->set(compact('publishers'));
+		$this->set(compact('authors', 'publishers'));
 	}
 }
