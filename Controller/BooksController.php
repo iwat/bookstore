@@ -8,7 +8,17 @@ class BooksController extends AppController
 
 	public function index()
 	{
-		$books = $this->paginate('Book');
+		if (!empty($this->request->query['q']))
+		{
+			$books = $this->paginate('Book', array(
+				'Book.title LIKE' => '%' . $this->request->query['q'] . '%'
+			));
+		}
+		else
+		{
+			$books = $this->paginate('Book');
+		}
+
 		$this->set(compact('books'));
 	}
 
@@ -44,5 +54,10 @@ class BooksController extends AppController
 		$authors = $this->Book->Author->find('list', array('order' => 'name'));
 		$publishers = $this->Book->Publisher->find('list', array('order' => 'name'));
 		$this->set(compact('authors', 'publishers'));
+	}
+
+	public function search()
+	{
+		// There is nothing here
 	}
 }
