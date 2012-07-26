@@ -8,6 +8,27 @@ class CartController extends AppController
 		$this->Auth->allow('*');
 	}
 
+	public function index()
+	{
+		$booksInCart = $this->Session->read('Cart.books');
+		$books = $this->Book->findAllById(array_keys($booksInCart));
+		$summary = array('amount' => 0, 'total' => 0);
+
+		foreach ($books as &$book)
+		{
+			$amount = $booksInCart[$book['Book']['id']];
+			$total = $amount * $book['Book']['price'];
+
+			$book['Book']['amount'] = $amount;
+			$book['Book']['total'] = $total;
+
+			$summary['amount'] += $amount;
+			$summary['total'] += $total;
+		}
+
+		$this->set(compact('books', 'summary'));
+	}
+
 	public function addBook($bookId)
 	{
 		$booksInCart = $this->Session->read('Cart.books');
