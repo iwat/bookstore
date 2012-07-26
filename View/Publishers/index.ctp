@@ -2,10 +2,12 @@
 	<table>
 		<tr>
 			<th>Name</th>
+			<th>Actions</th>
 		</tr>
 		<?php foreach ($publishers as $publisher): ?>
 		<tr>
 			<td><?= $publisher['Publisher']['name']; ?></td>
+			<td><?= $this->Html->link('Edit', array('action' => 'edit', $publisher['Publisher']['id'])); ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</table>

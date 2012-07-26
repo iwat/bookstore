@@ -32,4 +32,19 @@ class PublishersController extends AppController
 			}
 		}
 	}
+
+	public function edit($publisherId)
+	{
+		if ($this->request->data)
+		{
+			if ($this->Publisher->save($this->request->data))
+			{
+				$this->flash('Edited Successfully', array('action' => 'index'));
+			}
+		}
+		else
+		{
+			$this->request->data = $this->Publisher->findById($publisherId);
+		}
+	}
 }
